@@ -4,24 +4,157 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script
-      src="https://kit.fontawesome.com/40012cbc3d.js"
+      src="https://kit.fontawesome.com/554415074b.js"
       crossorigin="anonymous"
     ></script>
-    <title>Document</title>
+    <title>Weather APP</title>
   </head>
+
   <body>
-    <div class="wave1"></div>
-    <div class="wave2"></div>
-    <div class="wave3"></div>
-
-    <div id="wc"></div>
-    <!-- wc=weather condition -->
-    <div class="info">
-      <h2 class="location">Angul , India</h2>
-      <p id="date">day | Month | Time</p>
+    <div class="box">
+      <div class="wave -one"></div>
+      <div class="wave -two"></div>
+      <div class="wave -three"></div>
+      <div id="weathercon">
+        <i class="fa-solid fa-cloud-bolt" style="color: red"></i>
+      </div>
+      <div class="info">
+        <h2 class="location">{%location%},{%country%}</h2>
+        <h1 class="temp">
+          {%tempval%}<i class="fa-solid fa-temperature-half"></i>
+        </h1>
+        <p id="date">day | Month | Time <i class="fa-solid fa-calendar"></i></p>
+        <h3 class="tempmin_max">{%tempmin%} | {%tempmax%}</h3>
+      </div>
     </div>
+    <!-- wc=weather condition -->
+    <!--  -->
   </body>
-</html>
+  <script>
+    const currDate = document.getElementById('date');
+    let weathercon = document.getElementById('weathercon');
+    const tempStatus = 'clouds';
 
-<!-- https://api.openweathermap.org/data/2.5/weather?q=angul&appid=0755fc65bf4418f9fc447090f90b94e7 -->
+    const getCurrenttime = () => {
+      const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June',
+        'July',
+        'Aug',
+        'Sept',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+      let now = new Date();
+      let currentTime = new Date();
+      var month = months[now.getMonth()];
+      let day = weekday[currentTime.getDay()];
+      var date = now.getDate();
+      var hour = now.getHours();
+      var min = now.getMinutes();
+      let period = 'am';
+      if (hour > 11) {
+        period = 'pm';
+        if (hour > 12) {
+          hour -= 12;
+        }
+      }
+      if (hour < 10) {
+        hour = '0' + hour;
+      }
+      if (min < 10) {
+        min = '0' + hour;
+      }
+      return `${day} | ${date} | ${month} | ${hour}:${min}${period}`;
+    };
+    currDate.innerHTML = getCurrenttime();
+  </script>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/554415074b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Weather APP</title>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="wave -one"></div>
+      <div class="wave -two"></div>
+      <div class="wave -three"></div>
+      <div id="weathercon">
+        <i class="fa-solid fa-cloud-bolt" style="color: red"></i>
+      </div>
+      <div class="info">
+        <h2 class="location">{%location%},{%country%}</h2>
+        <h1 class="temp">
+          {%tempval%}<i class="fa-solid fa-temperature-half"></i>
+        </h1>
+        <p id="date">day | Month | Time <i class="fa-solid fa-calendar"></i></p>
+        <h3 class="tempmin_max">{%tempmin%} | {%tempmax%}</h3>
+      </div>
+    </div>
+    <!-- wc=weather condition -->
+    <!--  -->
+  </body>
+  <script>
+    const currDate = document.getElementById('date');
+    let weathercon = document.getElementById('weathercon');
+    const tempStatus = 'clouds';
+
+    const getCurrenttime = () => {
+      const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const months = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June',
+        'July',
+        'Aug',
+        'Sept',
+        'Oct',
+        'Nov',
+        'Dec',
+      ];
+      let now = new Date();
+      let currentTime = new Date();
+      var month = months[now.getMonth()];
+      let day = weekday[currentTime.getDay()];
+      var date = now.getDate();
+      var hour = now.getHours();
+      var min = now.getMinutes();
+      let period = 'am';
+      if (hour > 11) {
+        period = 'pm';
+        if (hour > 12) {
+          hour -= 12;
+        }
+      }
+      if (hour < 10) {
+        hour = '0' + hour;
+      }
+      if (min < 10) {
+        min = '0' + hour;
+      }
+      return `${day} | ${date} | ${month} | ${hour}:${min}${period}`;
+    };
+    currDate.innerHTML = getCurrenttime();
+  </script>
+</html>
